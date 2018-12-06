@@ -1,3 +1,43 @@
-<p>
-  graficas1 works!
-</p>
+<div class="row">
+
+   <!--  <tbody>
+        <tr *ngFor="let item of graficos; let i =index">
+           <td>{{i}}</td>
+           <td>{{item.labels}}</td>
+        </tr>
+      </tbody> -->
+
+   <!--  <div class="col-6" *ngFor="let chart of graficos">
+        <div class="card">
+            <div class="card-body">
+                
+            <app-grafico-dona [graficos]="chart"></app-grafico-dona>
+                  
+            </div>
+        </div>
+    </div> -->
+
+
+</div>
+
+<div class="row">
+     <div class="col-6">
+         <div class="card">
+             <div class="card-body">
+                
+            <h4 class="card-title">{{graficos.grafico1.leyenda}}</h4>
+                 
+            <app-grafico-dona 
+             [doughnutChartLabels]="graficos.grafico1.labels"
+             [doughnutChartData]="graficos.grafico1.data"
+             doughnutChartType="doughnut"
+             
+             >
+             </app-grafico-dona> 
+                   
+             </div>
+         </div>
+     </div>
+ 
+ 
+ </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { iif } from 'rxjs';
 
 @Component({
   selector: 'app-progress',
@@ -17,22 +16,5 @@ export class ProgressComponent implements OnInit {
   }
 
 
- /*  cambiarValor(valor: number) {
 
-    if(this.progreso >= 100 && valor > 0) {
-      this.progreso = 100;
-      return;
-    }
-    if(this.progreso <= 0 && valor < 0){
-      this.progreso = 0;
-      return;
-    }
-
-    this.progreso += valor;
-  } */
-
- /*  actualizar( event: number){
-    console.log("evento: " , event);
-    this.progreso1 = event;
-  } */
 }

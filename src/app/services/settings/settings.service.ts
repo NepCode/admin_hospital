@@ -1,9 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SettingsService {
 
   ajustes: Ajustes = {
@@ -11,50 +9,44 @@ export class SettingsService {
     tema: 'default'
   };
 
-
-  constructor(@Inject(DOCUMENT) private _document,) { 
-
+  constructor( @Inject(DOCUMENT) private _document ) {
     this.cargarAjustes();
-
   }
 
   guardarAjustes() {
-   // console.log('saved in localstorage');
-    localStorage.setItem('ajustes', JSON.stringify(this.ajustes));
+    // console.log('Guardado en el localStorage');
+    localStorage.setItem('ajustes', JSON.stringify( this.ajustes )  );
   }
 
   cargarAjustes() {
-    if( localStorage.getItem('ajustes') ) {
-      this.ajustes =  JSON.parse(localStorage.getItem('ajustes'));
-      //console.log('cargando de localstorage');
 
-      this.aplicarTema(this.ajustes.tema);
+    if ( localStorage.getItem('ajustes') ) {
+      this.ajustes = JSON.parse( localStorage.getItem('ajustes') );
+      // console.log( 'Cargando del localstorage' );
 
-    }else{
-      //console.log('usando valores por defecto');
-      this.aplicarTema(this.ajustes.tema);
+      this.aplicarTema( this.ajustes.tema );
 
+    }else {
+      // console.log( 'Usando valores por defecto' );
+      this.aplicarTema( this.ajustes.tema );
     }
+
   }
 
-  aplicarTema(tema: string) {
-    
-    let url = `assets/css/colors/${tema}.css`;
-    //this._document.getElementById('theme_conf').setAttribute('href', theme + '.css');
-    this._document.getElementById('theme_conf').setAttribute('href',url); //fernando
-    //this.renderer.setAttribute(document.getElementById('theme_conf'),'href',url);
+  aplicarTema( tema: string ) {
 
-    this.ajustes.tema  = tema;
-    this.ajustes.temaUrl  = url;
+
+    let url = `assets/css/colors/${ tema }.css`;
+    this._document.getElementById('theme_conf').setAttribute('href', url );
+
+    this.ajustes.tema = tema;
+    this.ajustes.temaUrl = url;
 
     this.guardarAjustes();
 
   }
 
-
 }
-
-
 
 interface Ajustes {
   temaUrl: string;

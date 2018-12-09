@@ -1,27 +1,28 @@
-import { NgModule } from "@angular/core";
+
+import { NgModule } from '@angular/core';
+import { PAGES_ROUTES } from './pages.routes';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
-//ng2-charts
+
+// ng2-charts
 import { ChartsModule } from 'ng2-charts';
-
-//using these in-built directives like ngFor,ngIf etc. 
-import { CommonModule } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
-import { PAGES_ROUTES } from './pages.routes';
 
-//temporal
+
+// temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
-
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
     declarations: [
@@ -31,19 +32,20 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         Graficas1Component,
         IncrementadorComponent,
         GraficoDonaComponent,
-        AccountSettingsComponent
-      ],
-      exports: [
+        AccountSettingsComponent,
+        PromesasComponent,
+        RxjsComponent
+    ],
+    exports: [
         DashboardComponent,
         ProgressComponent,
         Graficas1Component
-      ],
-      imports: [
+    ],
+    imports: [
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        ChartsModule,
-        CommonModule
-      ]
+        ChartsModule
+    ]
 })
 export class PagesModule { }

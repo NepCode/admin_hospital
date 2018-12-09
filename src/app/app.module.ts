@@ -1,24 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-//Routes
+// Rutas
 import { APP_ROUTES } from './app.routes';
 
-//Modules
+// Modulos
 import { PagesModule } from './pages/pages.module';
 
-//temporal
+// temporal
 import { FormsModule } from '@angular/forms';
 
-//services
-//import { SettingsService } from './services/settings.service';
+// Servicios
 import { ServiceModule } from './services/service.module';
 
 
-//components
+
+
+// Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+
 
 
 @NgModule({

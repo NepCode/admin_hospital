@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { retry,map,filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UploadFileService } from '../upload-file/upload-file.service';
 
 
 @Injectable()
@@ -14,7 +15,8 @@ export class UsuarioService {
 
   constructor(
     public http: HttpClient,
-    public router: Router
+    public router: Router,
+    public _uploadFileService: UploadFileService
   ) {
     this.cargarStorage();
     console.log('servicio usuario listo');
@@ -121,6 +123,53 @@ export class UsuarioService {
               swal('Usuario Creado', usuario.email, 'success');
               return res.usuario;
               }));
+
+   }
+
+   actualizarUsuario(usuario:Usuario) {
+
+    let url =URL_SERVICIOS + '/usuario/' + usuario._id;
+    url += '?token=' + this.token;
+
+    //console.log(url);
+
+   /*  return this.http.post( url , usuario)
+                .map(  (resp: any) => {
+                  return resp.usuario;
+                }); */
+
+      // return this.http.put(url, usuario);
+         /*  .pipe(map((res: any) => {
+              swal('Usuario Actualizado', usuario.email, 'success');
+              return res.usuario;
+              })); */
+
+           return this.http.put(url, usuario)
+           .pipe(map((resp: any) => {
+              //this.usuario = resp.usuario;
+              let usuarioDB : Usuario = resp.usuario;
+              this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+              swal('User updated',usuario.nombre,'success');
+              return true;
+              })); 
+
+   }
+
+
+
+   cambiarImagen(file: File, id: string) {
+
+      this._uploadFileService.subirArchivo(file,'usuarios',id)
+      .then( (resp:any) => {
+        //console.log( resp); //regresa objeto
+        this.usuario.img = resp.usuario.img;
+        swal('Image profile updated', this.usuario.nombre, 'success');
+
+        this.guardarStorage(id, this.token, this.usuario);
+      })
+      .catch( resp => {
+        console.log( resp);
+      });
 
    }
 

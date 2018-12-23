@@ -38,7 +38,7 @@
             <img *ngIf="!imgTemp" [src]="usuario.img | image" class="w150">
             <img *ngIf="imgTemp" [src]="imgTemp" class="w150">
 
-            <input (change)="seleccionImagen($event.target.files[0])" type="file">
+            <input [(ngModel)]="searchValue" (change)="seleccionImagen($event.target.files[0])" type="file">
 
             <br><br>
 

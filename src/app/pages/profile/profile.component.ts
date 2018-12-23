@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   imagenSubir: File;
   imgTemp: string;
 
+  searchValue:string = '';
+
   constructor( public _usuarioService: UsuarioService) { 
     this.usuario = this._usuarioService.usuario;
   }
@@ -71,6 +73,7 @@ export class ProfileComponent implements OnInit {
 
   cambiarImagen() {
     this._usuarioService.cambiarImagen(this.imagenSubir, this.usuario._id);
+    this.searchValue = null;
   }
 
 }

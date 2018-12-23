@@ -22,7 +22,7 @@ export class BreadcrumbsComponent implements OnInit {
    
     this.getDataRoute()
     .subscribe( data => {
-      console.log(data);
+      //console.log(data); //printing current url
       this.titulo= data.titulo;
       this.title.setTitle(this.titulo);
 

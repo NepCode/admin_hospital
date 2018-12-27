@@ -43,7 +43,7 @@ export class ModalUploadComponent implements OnInit {
     }
 
     //checkinf what type of file
-    console.log(archivo);
+    //console.log(archivo);
     if( archivo.type.indexOf('image')<0){
       swal('only image file', 'selected file it not a image', 'error');
       this.imagenSubir = null;

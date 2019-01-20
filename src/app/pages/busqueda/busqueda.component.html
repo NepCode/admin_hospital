@@ -1,0 +1,97 @@
+<div class="row animated fadeIn">
+  <div class="col-4">
+      <div class="card">
+          <div class="card-body">
+            <div class="card-title">Usuarios</div>
+
+            <table class="table table-hover" *ngIf="usuarios.length > 0">
+              <tbody>
+
+                <tr *ngFor= "let usuario of usuarios" [routerLink]="['/usuarios']" class="pointer">
+
+                  <td class="w70">
+                      <img [src]="usuario.img | image: 'usuario'"  class="img-50 img-circle pointer" alt="">
+                  </td>
+
+                  <td>{{usuario.nombre}}</td>
+
+                </tr>
+                
+              </tbody>
+            </table>
+
+            <div class="alert alert-info" *ngIf="usuarios.length === 0">
+              There is  no users
+            </div>
+             
+          </div>
+      </div>
+  </div>
+
+  <div class="col-4">
+      <div class="card">
+          <div class="card-body">
+            <div class="card-title">Hospitales</div>
+
+            <table class="table table-hover" *ngIf="hospitales.length > 0">
+              <tbody>
+                <tr *ngFor= "let hospital of hospitales" [routerLink]="['/hospitales']" class="pointer">
+
+                  <td class="w70">
+                      <img [src]="hospital.img | image: 'hospital'"  class="img-50 img-circle pointer" alt="">
+                  </td>
+
+                  <td>{{hospital.nombre}}</td>
+
+                
+  
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="alert alert-info" *ngIf="hospitales.length === 0">
+              There is  no hospitales
+            </div>
+             
+          </div>
+      </div>
+  </div>
+
+  <div class="col-4">
+      <div class="card">
+          <div class="card-body">
+            <div class="card-title">Medicos</div>
+
+            <table class="table table-hover" *ngIf="medicos.length > 0">
+              <tbody>
+                <tr *ngFor=" let medico of medicos" [routerLink]="['/medico',medico._id]" class="pointer">
+
+                  <td class="w70">
+                      <img [src]="medico.img | image: 'medico'"  class="img-50 img-circle pointer" alt="">
+                  </td>
+  
+                  <td>{{medico.nombre}}</td>
+
+                  <td>
+                    <button [routerLink]="['/medico',medico._id]" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+
+
+            <div class="alert alert-info" *ngIf="medicos.length === 0">
+              There is  no medicos
+            </div>
+             
+          </div>
+      </div>
+  </div>
+
+</div>
+
+
+
+
+
